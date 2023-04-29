@@ -1,0 +1,62 @@
+Should be able to handle conversion of volume units found in recipes
+
+Should be able to handle conversion between United States & metric measurements
+    - cup in US system is 236.59 mL
+    - cup in metric system is 250.0 mL
+
+Consider using EXACT measurements (236 mL vs 240 mL for a cup)
+ex. 1 cup in US system -> 236.5882365 mL
+
+Should handle conversion without lossy math
+
+Should be able to convert from abbreviation to full spelling
+
+Should be able to convert from full spelling to abbreviation
+
+Should be able to interpret fractional symbols from html i.e.
+    - ½ -> 0.5
+    - ⅗ -> 0.6
+    - ⅓ -> 0.3
+    - https://www.madeintext.com/fraction-symbols/
+
+Should be able to handle the conversion listed below
+
+Metric  ->  Standard
+1 mL        .2 tsp
+5 mL        1 tsp
+15 mL       1 tbsp
+240 mL      1 c (8 fl. oz)
+30 mL       1 fl. oz
+1 liter     34 fl. oz
+0.95 l      1 qt
+3.8 l       1 gal (gallon)
+480 mL      1 pt
+
+metric  ->  metric
+1000 mL     1 l
+
+Standard -> Standard
+8 fl oz     1 cup
+2 cups      1 pt
+2 pts       1 qt
+4 qt        1 gal
+
+abbreviations
+mL      milliliter
+l       liter
+fl oz   fluid ounce
+c       cup
+pt      pint
+qt      quart
+gal     gallon
+tsp     teaspoon
+tbl     tablespoon
+
+Should be able to output plural form of abbreviation if not == 1
+
+
+similar to moneta?
+amount housed in class
+each amount gets units
+
+
