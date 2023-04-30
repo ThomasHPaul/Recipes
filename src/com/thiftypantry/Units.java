@@ -5,12 +5,15 @@ import java.util.Map;
 
 public class Units {
 
-    private static final Map<String, Double> unitConversionTable = new HashMap<String, Double>();
+    private static final Map<String, Double> unitConversionTable = new HashMap<>();
 
     private StandardUnits unitsType;
     private double qty;
 
     public Units(double qty, StandardUnits unitsType) {
+        if(qty <= 0) {
+            throw new IllegalArgumentException("Cannot create Units object with qty <= 0");
+        }
         loadHashMap();
         this.qty = qty;
         this.unitsType = unitsType;
