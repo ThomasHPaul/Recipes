@@ -27,6 +27,16 @@ public class Units {
         qty = newQty;
     }
 
+    @Override
+    public String toString() {
+        String pluralOrLessThanOneEnding = "";
+        if( qty != 1 ) {
+            pluralOrLessThanOneEnding = "s";
+        }
+
+        return String.format("%s %s%s", qty, unitsType.getFullName(), pluralOrLessThanOneEnding);
+    }
+
     public double getQty() { return qty; }
 
     public StandardUnits getStandardUnit() { return unitsType; }
@@ -40,6 +50,7 @@ public class Units {
         unitConversionTable.put("ml2gal",0.000264172d);
         unitConversionTable.put("ml2pt",0.002113376d);
         unitConversionTable.put("ml2c",0.0041666666666667d);
+
         unitConversionTable.put("l2ml",1000d);
         unitConversionTable.put("l2tsp",202.8841d);
         unitConversionTable.put("l2tbsp",67.62804d);
@@ -47,6 +58,8 @@ public class Units {
         unitConversionTable.put("l2qt",1.056688d);
         unitConversionTable.put("l2gal",0.264172d);
         unitConversionTable.put("l2pt",2.113376d);
+        unitConversionTable.put("l2c",4.22675d);
+
         unitConversionTable.put("tsp2ml",5d);
         unitConversionTable.put("tsp2l",200d);
         unitConversionTable.put("tsp2tbsp",0.3333333d);
@@ -54,6 +67,8 @@ public class Units {
         unitConversionTable.put("tsp2qt",0.005208333d);
         unitConversionTable.put("tsp2gal",0.001302083d);
         unitConversionTable.put("tsp2pt",0.01041667d);
+        unitConversionTable.put("tsp2c",0.0208333d);
+
         unitConversionTable.put("tbsp2ml",15d);
         unitConversionTable.put("tbsp2l",0.01478676d);
         unitConversionTable.put("tbsp2tsp",3d);
@@ -61,6 +76,8 @@ public class Units {
         unitConversionTable.put("tbsp2qt",0.015625d);
         unitConversionTable.put("tbsp2gal",0.00390625d);
         unitConversionTable.put("tbsp2pt",0.03125d);
+        unitConversionTable.put("tbsp2c",0.0625d);
+
         unitConversionTable.put("fl oz2ml",30d);
         unitConversionTable.put("fl oz2l",0.02957353d);
         unitConversionTable.put("fl oz2tsp",6d);
@@ -68,6 +85,8 @@ public class Units {
         unitConversionTable.put("fl oz2qt",0.03125d);
         unitConversionTable.put("fl oz2gal",0.0078125d);
         unitConversionTable.put("fl oz2pt",0.0625d);
+        unitConversionTable.put("fl oz2c",0.125d);
+
         unitConversionTable.put("qt2ml",946.353d);
         unitConversionTable.put("qt2l",0.946353d);
         unitConversionTable.put("qt2tsp",192d);
@@ -75,6 +94,8 @@ public class Units {
         unitConversionTable.put("qt2fl oz",32d);
         unitConversionTable.put("qt2gal",0.25d);
         unitConversionTable.put("qt2pt",2d);
+        unitConversionTable.put("qt2c",4d);
+
         unitConversionTable.put("gal2ml",3785.412d);
         unitConversionTable.put("gal2l",3.785412d);
         unitConversionTable.put("gal2tsp",768d);
@@ -82,6 +103,8 @@ public class Units {
         unitConversionTable.put("gal2fl oz",128d);
         unitConversionTable.put("gal2qt",4d);
         unitConversionTable.put("gal2pt",8d);
+        unitConversionTable.put("gal2c",16d);
+
         unitConversionTable.put("pt2ml",473.1765d);
         unitConversionTable.put("pt2l",0.4731765d);
         unitConversionTable.put("pt2tsp",96d);
@@ -89,6 +112,15 @@ public class Units {
         unitConversionTable.put("pt2fl oz",16d);
         unitConversionTable.put("pt2qt",0.5d);
         unitConversionTable.put("pt2gal",0.125d);
+        unitConversionTable.put("pt2c",2d);
+
         unitConversionTable.put("c2ml", 240d);
+        unitConversionTable.put("c2l", 0.236588d);
+        unitConversionTable.put("c2tsp", 48d);
+        unitConversionTable.put("c2tbsp", 16d);
+        unitConversionTable.put("c2fl oz", 8d);
+        unitConversionTable.put("c2qt", 0.25d);
+        unitConversionTable.put("c2gal", 0.0625d);
+        unitConversionTable.put("c2pt", 0.5d);
     }
 }

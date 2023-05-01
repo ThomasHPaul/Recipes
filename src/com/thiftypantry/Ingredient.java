@@ -17,6 +17,10 @@ public class Ingredient {
             units.convert(Units.commonVolumeUnit);
         }
     }
-
     public double getAmount() { return units.getQty(); }
+
+    @Override
+    public String toString() {
+        return units.toString();
+    }
 }

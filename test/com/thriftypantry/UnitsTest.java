@@ -1,5 +1,6 @@
 package com.thriftypantry;
 
+import com.thiftypantry.Ingredient;
 import com.thiftypantry.StandardUnits;
 import com.thiftypantry.Units;
 import org.junit.jupiter.api.Test;
@@ -28,6 +29,14 @@ public class UnitsTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Units(0d, StandardUnits.TEASPOON),
                 "Cannot create Units object with qty <= 0"); // No zero qty
+    }
+
+    @Test
+    public void toStringCalledOnUnitsWithQtyNotEqualToOne_sAddedToEndOfUnitName() {
+        var units = new Units(0.5d, StandardUnits.CUP);
+
+        System.out.println(units);
+        assertEquals("0.5 cups", units.toString());
     }
 }
 
