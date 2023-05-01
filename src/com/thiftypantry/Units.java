@@ -25,6 +25,7 @@ public class Units {
         String conversion = unitsType.getAbbreviation() + "2" + convertTo.getAbbreviation();
         double newQty = Math.round(qty * unitConversionTable.get(conversion).doubleValue());
         qty = newQty;
+        unitsType = convertTo;
     }
 
     @Override

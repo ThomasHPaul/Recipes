@@ -13,6 +13,21 @@ public class IngredientTest {
     public void createIngredient_VolumeUnitConvertedToCommonUnit() {
         var ingredient = new Ingredient("flour", new Units(4, StandardUnits.CUP));
 
-        assertEquals(960, ingredient.getAmount());
+        assertEquals(4.0, ingredient.getAmount());
+    }
+
+    @Test
+    public void toStringCalledOnIngredientWithQtyNotEqualToOne_sAddedToEndOfIngredientName() {
+        var ingredient = ingredient("onion", 0.5d, StandardUnits.CUP);
+        if(ingredient.getUnits().getQty() != 1d) {
+            ingredient.makeNamePlural();
+        }
+
+        System.out.println(ingredient);
+        assertEquals("0.5 cups onions", ingredient.toString());
+    }
+
+    private Ingredient ingredient(String name, double qty, StandardUnits units) {
+        return new Ingredient(name, new Units(qty, units));
     }
 }

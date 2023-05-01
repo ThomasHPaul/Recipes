@@ -4,6 +4,12 @@ Add cup conversions
 
 ~~~~~~~~
 
+~~Change~~
+
+units should not automatically convert to background unit. Only if called upon (such as when combining recipeList ingredients for purchasing)
+
+~~~~~~~~~~
+
 // Update this change AFTER church/add classes
 // Multiple different units of same ingredients should convert & add to the correct qty base unit
 

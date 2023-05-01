@@ -7,8 +7,6 @@ public class Ingredient {
     public Ingredient(String name, Units units) {
         this.name = name;
         this.units = units;
-
-        convertToBaseUnit();
     }
 
     private void convertToBaseUnit() {
@@ -21,6 +19,10 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return units.toString();
+        return units.toString() + " " + name;
     }
+
+    public Units getUnits() { return units; }
+
+    public void makeNamePlural() { name = name + "s"; }
 }
