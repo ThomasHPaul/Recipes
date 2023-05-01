@@ -1,6 +1,10 @@
 // Update this change AFTER church/add classes
 // Multiple different units of same ingredients should convert & add to the correct qty base unit
 //
+
+// Units is really only about volume units, need to consider weights as well
+
+
 Should be able to handle conversion of volume units found in recipes
 
 Should be able to handle conversion between United States & metric measurements
