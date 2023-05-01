@@ -28,14 +28,6 @@ public class UnitsTest {
                 () -> new Units(0d, StandardUnits.TEASPOON),
                 "Cannot create Units object with qty <= 0"); // No zero qty
     }
-
-    @Test
-    public void convertFromCurrentUnitToNonexistantUnit_throwError() {
-        // this test may start out true given behavior of enum, test though to be sure.
-        // if default behavior then can remove test
-    }
-
-
 }
 
 
