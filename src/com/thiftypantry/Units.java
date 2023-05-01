@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class Units {
 
+    public static final StandardUnits commonVolumeUnit = StandardUnits.MILLILITER;
+
     private static final Map<String, Double> unitConversionTable = new HashMap<>();
 
     private StandardUnits unitsType;
@@ -19,13 +21,15 @@ public class Units {
         this.unitsType = unitsType;
     }
 
-    public double convert(StandardUnits convertTo) {
+    public void convert(StandardUnits convertTo) {
         String conversion = unitsType.getAbbreviation() + "2" + convertTo.getAbbreviation();
-        System.out.println(conversion);
         double newQty = Math.round(qty * unitConversionTable.get(conversion).doubleValue());
-
-        return newQty;
+        qty = newQty;
     }
+
+    public double getQty() { return qty; }
+
+    public StandardUnits getStandardUnit() { return unitsType; }
 
     private void loadHashMap() {
         unitConversionTable.put("ml2l",0.0001d);
@@ -35,6 +39,7 @@ public class Units {
         unitConversionTable.put("ml2qt",0.001056688d);
         unitConversionTable.put("ml2gal",0.000264172d);
         unitConversionTable.put("ml2pt",0.002113376d);
+        unitConversionTable.put("ml2c",0.0041666666666667d);
         unitConversionTable.put("l2ml",1000d);
         unitConversionTable.put("l2tsp",202.8841d);
         unitConversionTable.put("l2tbsp",67.62804d);
@@ -84,5 +89,6 @@ public class Units {
         unitConversionTable.put("pt2fl oz",16d);
         unitConversionTable.put("pt2qt",0.5d);
         unitConversionTable.put("pt2gal",0.125d);
+        unitConversionTable.put("c2ml", 240d);
     }
 }

@@ -1,6 +1,24 @@
+Add cup conversions
+
 // Update this change AFTER church/add classes
 // Multiple different units of same ingredients should convert & add to the correct qty base unit
-//
+
+At what level should this happen?
+
+Could happen at the recipe level but HAS to happen at the recipeList level
+What is RecipeList?
+    collection of recipes that you can call methods against
+        - getIngredientList() returns collapsed list of all ingredients in the unit closest to the qty (mL vs L, qt vs gallon)
+        - getRecipe()
+        - getAllRecipes()
+
+
+Recipe
+    ->Ingredients
+        -> name
+        -> qty
+        -> units
+
 
 // Units is really only about volume units, need to consider weights as well
 

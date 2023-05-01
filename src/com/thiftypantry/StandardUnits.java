@@ -8,7 +8,8 @@ public enum StandardUnits {
     FLUID_OUNCE("fl oz"),
     QUART("qt"),
     GALLON("gal"),
-    PINT("pt");
+    PINT("pt"),
+    CUP("c");
 
     private String abbreviation;
 

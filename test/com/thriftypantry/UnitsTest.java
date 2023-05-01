@@ -14,8 +14,9 @@ public class UnitsTest {
     @Test // TODO change to parameterized tests with multiple conversions
     public void convertFromCurrentUnitToNewUnit_CorrectQtyReturned() {
         var units = new Units(3d, StandardUnits.TEASPOON);
+        units.convert(StandardUnits.TABLESPOON);
 
-        assertEquals(1, units.convert(StandardUnits.TABLESPOON));
+        assertEquals(1,units.getQty());
     }
 
     @Test
