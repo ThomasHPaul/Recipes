@@ -40,7 +40,11 @@ public class Units {
 
     public double getQty() { return qty; }
 
+    public void setQty(double qty) { this.qty = qty; }
+
     public StandardUnits getStandardUnit() { return unitsType; }
+
+    public void setStandardUnit(StandardUnits units) { unitsType = units; }
 
     private void loadHashMap() {
         unitConversionTable.put("ml2l",0.0001d);

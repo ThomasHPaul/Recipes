@@ -24,4 +24,30 @@ public class StandardUnitsTest {
                 Arguments.of("gal", StandardUnits.GALLON)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("fullNameTestProvider")
+    public void standardUnitsFullName_CorrectNameReturned(String correctName, StandardUnits units) {
+        assertEquals(correctName, units.getAbbreviation());
+    }
+
+    private static Stream<Arguments> fullNameTestProvider() {
+        return Stream.of(
+                Arguments.of("cup", StandardUnits.CUP),
+                Arguments.of("fluid ounce", StandardUnits.FLUID_OUNCE),
+                Arguments.of("quart", StandardUnits.QUART),
+                Arguments.of("pint", StandardUnits.PINT),
+                Arguments.of("liter", StandardUnits.LITER)
+        );
+    }
+
+    @Test
+    public void callAddStandardUnitWithUnitPresentOnEnum_ThrowError() {
+
+    }
+
+    @Test
+    public void callAddStandardUnitWithUnitMissingOnEnum_StandardUnitsEnumUpdated () {
+
+    }
 }

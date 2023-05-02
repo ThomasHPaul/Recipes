@@ -38,6 +38,36 @@ public class UnitsTest {
         System.out.println(units);
         assertEquals("0.5 cups", units.toString());
     }
+
+    @Test
+    public void weightMissingInWeightConversionTable_InvalidArgumentExceptionReturned() {
+
+    }
+
+    @Test
+    public void volumeMissingInVolumeConversionTable_InvalidArgumentExceptionReturned() {
+
+    }
+
+    @Test
+    public void commonVolumeUnitChangedAndGetUnit_CorrectUnitReturned() {
+
+    }
+
+    @Test
+    public void commonVolumeUnitChangedAndGetQty_CorrectQtyReturned() {
+
+    }
+
+    @Test
+    public void commonWeightUnitChangedAndGetUnit_CorrectUnitReturned() {
+
+    }
+
+    @Test
+    public void commonWeightUnitChangedAndGetUnit_CorrectUnitReturned() {
+
+    }
 }
 
 
