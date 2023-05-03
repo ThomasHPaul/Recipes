@@ -32,6 +32,22 @@ public class StandardUnit {
     }
 
     public static void addMeasurement(String abbrev, String fullName) {
+        if(fullName == null) {
+            throw new IllegalArgumentException("Cannot have null value for unit fullName");
+        }
+        if(abbrev == null) {
+            throw new IllegalArgumentException("Cannot have null value for unit abbreviation");
+        }
+        if(fullName.equals("")) {
+            throw new IllegalArgumentException("Cannot have blank fullName for unit");
+        }
+        if(abbrev.equals("")) {
+            throw new IllegalArgumentException("Cannot have blank unit abbreviation");
+        }
+        if(list.get(abbrev) != null) {
+            throw new IllegalArgumentException("Measurement " + abbrev + " is already in StandardUnit.list");
+        }
+
         list.put(abbrev, new StandardUnit(abbrev, fullName));
     }
 
