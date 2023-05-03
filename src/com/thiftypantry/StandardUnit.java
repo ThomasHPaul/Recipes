@@ -55,9 +55,13 @@ public class StandardUnit {
         list.remove(abbrev);
     }
 
-    public static String getAbbreviation(String abbrev) { return list.get(abbrev).abbreviation; }
+    public String getAbbreviation() { return abbreviation; }
 
-    public static String getFullName(String abbrev) { return list.get(abbrev).fullName; }
+    public String getFullName() { return fullName; }
+
+    public static String getAbbreviationFromList(String abbrev) { return list.get(abbrev).getAbbreviation(); }
+
+    public static String getFullName(String abbrev) { return list.get(abbrev).getFullName(); }
 
     public static void setAbbreviation(String abbrev, String newAbbrev) { list.get(abbrev).abbreviation = newAbbrev; }
 

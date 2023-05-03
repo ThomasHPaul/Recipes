@@ -5,14 +5,14 @@ import java.util.Map;
 
 public class Units {
 
-    public static final StandardUnits commonVolumeUnit = StandardUnits.MILLILITER;
+    public static final StandardUnit commonVolumeUnit = StandardUnit.list.get("ml");
 
     private static final Map<String, Double> unitConversionTable = new HashMap<>();
 
-    private StandardUnits unitsType;
+    private StandardUnit unitsType;
     private double qty;
 
-    public Units(double qty, StandardUnits unitsType) {
+    public Units(double qty, StandardUnit unitsType) {
         if(qty <= 0) {
             throw new IllegalArgumentException("Cannot create Units object with qty <= 0");
         }
@@ -21,7 +21,7 @@ public class Units {
         this.unitsType = unitsType;
     }
 
-    public void convert(StandardUnits convertTo) {
+    public void convert(StandardUnit convertTo) {
         String conversion = unitsType.getAbbreviation() + "2" + convertTo.getAbbreviation();
         double newQty = Math.round(qty * unitConversionTable.get(conversion).doubleValue());
         qty = newQty;
@@ -42,9 +42,9 @@ public class Units {
 
     public void setQty(double qty) { this.qty = qty; }
 
-    public StandardUnits getStandardUnit() { return unitsType; }
+    public StandardUnit getStandardUnit() { return unitsType; }
 
-    public void setStandardUnit(StandardUnits units) { unitsType = units; }
+    public void setStandardUnit(StandardUnit units) { unitsType = units; }
 
     private void loadHashMap() {
         unitConversionTable.put("ml2l",0.0001d);
