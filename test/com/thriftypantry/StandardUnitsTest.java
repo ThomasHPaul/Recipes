@@ -42,12 +42,12 @@ public class StandardUnitsTest {
     }
 
     @Test
-    public void callAddStandardUnitWithUnitPresentOnEnum_ThrowError() {
+    public void callAddStandardUnitWithUnitPresent_ThrowError() {
 
     }
 
     @Test
-    public void callAddStandardUnitWithUnitMissingOnEnum_StandardUnitsEnumUpdated () {
+    public void callAddStandardUnitWithUnitMissing_StandardUnitUpdated () {
 
     }
 }

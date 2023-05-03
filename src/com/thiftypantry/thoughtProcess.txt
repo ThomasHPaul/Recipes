@@ -1,6 +1,8 @@
 to consider:
 change from enum to class for StandardUnits? (may need to add more in the future during runtime if missing)
 
+testAutoDeriveTableOfUnitConversions
+
 ~~DONE~~
 Add cup conversions
 

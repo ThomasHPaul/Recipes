@@ -63,11 +63,6 @@ public class UnitsTest {
     public void commonWeightUnitChangedAndGetUnit_CorrectUnitReturned() {
 
     }
-
-    @Test
-    public void commonWeightUnitChangedAndGetUnit_CorrectUnitReturned() {
-
-    }
 }
 
 
