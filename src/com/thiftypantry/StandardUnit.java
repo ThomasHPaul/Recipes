@@ -31,7 +31,7 @@ public class StandardUnit {
         this.fullName = fullName;
     }
 
-    public static void addMeasurement(String abbrev, String fullName) {
+    public static void upsertMeasurement(String abbrev, String fullName) {
         if(fullName == null) {
             throw new IllegalArgumentException("Cannot have null value for unit fullName");
         }
@@ -62,8 +62,4 @@ public class StandardUnit {
     public static String getAbbreviationFromList(String abbrev) { return list.get(abbrev).getAbbreviation(); }
 
     public static String getFullName(String abbrev) { return list.get(abbrev).getFullName(); }
-
-    public static void setAbbreviation(String abbrev, String newAbbrev) { list.get(abbrev).abbreviation = newAbbrev; }
-
-    public static void setFullName(String abbrev, String fullName) { list.get(abbrev).fullName = fullName; }
 }

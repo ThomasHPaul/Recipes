@@ -1,6 +1,7 @@
 package com.thriftypantry;
 
 import com.thiftypantry.Ingredient;
+import com.thiftypantry.StandardUnit;
 import com.thiftypantry.StandardUnits;
 import com.thiftypantry.Units;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,8 @@ public class UnitsTest {
 
     @Test // TODO change to parameterized tests with multiple conversions
     public void convertFromCurrentUnitToNewUnit_CorrectQtyReturned() {
-        var units = new Units(3d, StandardUnits.TEASPOON);
-        units.convert(StandardUnits.TABLESPOON);
+        var units = new Units(3d, StandardUnit.list.get("tsp"));
+        units.convert(StandardUnit.list.get("tbsp"));
 
         assertEquals(1,units.getQty());
     }

@@ -18,7 +18,7 @@ public class StandardUnitTest {
     public void callAddStandardUnitWithUnitAlreadyPresent_ThrowError() {
         String abbrev = "ml";
         assertThrows(IllegalArgumentException.class,
-                () ->StandardUnit.addMeasurement(abbrev, "milliliter"),
+                () ->StandardUnit.upsertMeasurement(abbrev, "milliliter"),
                 "Measurement " + abbrev + " is already in StandardUnit.list");
     }
 
@@ -26,7 +26,7 @@ public class StandardUnitTest {
     public void callAddStandardUnitWithEmptyAbbreviation_ThrowError() {
         String abbrev = "";
         assertThrows(IllegalArgumentException.class,
-                () ->StandardUnit.addMeasurement(abbrev, "Not Empty"),
+                () ->StandardUnit.upsertMeasurement(abbrev, "Not Empty"),
                 "Cannot have blank unit abbreviation");
     }
 
@@ -34,19 +34,19 @@ public class StandardUnitTest {
     public void callAddStandardUnitWithEmptyFullName_ThrowError() {
         String fullName = "";
         assertThrows(IllegalArgumentException.class,
-                () ->StandardUnit.addMeasurement("Not empty", fullName),
+                () ->StandardUnit.upsertMeasurement("Not empty", fullName),
                 "Cannot have blank fullName for unit");
     }
 
     @Test void callAddStandardUnitWithNullAbbreviation_ThrowError() {
         assertThrows(IllegalArgumentException.class,
-                () ->StandardUnit.addMeasurement(null, "not null"),
+                () ->StandardUnit.upsertMeasurement(null, "not null"),
                 "Cannot have null value for unit abbreviation");
     }
 
     @Test void callAddStandardUnitWithNullFullName_ThrowError() {
         assertThrows(IllegalArgumentException.class,
-                () ->StandardUnit.addMeasurement("not null", null),
+                () ->StandardUnit.upsertMeasurement("not null", null),
                 "Cannot have null value for unit fullName");
     }
 }
