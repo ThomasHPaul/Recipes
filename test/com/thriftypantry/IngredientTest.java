@@ -1,7 +1,7 @@
 package com.thriftypantry;
 
 import com.thiftypantry.Ingredient;
-import com.thiftypantry.StandardUnits;
+import com.thiftypantry.StandardUnit;
 import com.thiftypantry.Units;
 import org.junit.jupiter.api.Test;
 
@@ -11,14 +11,14 @@ public class IngredientTest {
 
     @Test
     public void createIngredient_VolumeUnitConvertedToCommonUnit() {
-        var ingredient = new Ingredient("flour", new Units(4, StandardUnits.CUP));
+        var ingredient = ingredient("flour", 4, StandardUnit.list.get("c"));
 
         assertEquals(4.0, ingredient.getAmount());
     }
 
     @Test
     public void toStringCalledOnIngredientWithQtyNotEqualToOne_sAddedToEndOfIngredientName() {
-        var ingredient = ingredient("onion", 0.5d, StandardUnits.CUP);
+        var ingredient = ingredient("onion", 0.5d, StandardUnit.list.get("c"));
         if(ingredient.getUnits().getQty() != 1d) {
             ingredient.makeNamePlural();
         }
@@ -27,7 +27,7 @@ public class IngredientTest {
         assertEquals("0.5 cups onions", ingredient.toString());
     }
 
-    private Ingredient ingredient(String name, double qty, StandardUnits units) {
+    private Ingredient ingredient(String name, double qty, StandardUnit units) {
         return new Ingredient(name, new Units(qty, units));
     }
 }
