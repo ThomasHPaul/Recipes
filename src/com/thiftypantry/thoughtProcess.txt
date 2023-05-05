@@ -1,22 +1,5 @@
 to consider:
-change from enum to class for StandardUnits? (may need to add more in the future during runtime if missing)
-
 testAutoDeriveTableOfUnitConversions
-
-~~DONE~~
-Add cup conversions
-
-
-~~~~~~~~
-
-~~Change~~
-
-units should not automatically convert to background unit. Only if called upon (such as when combining recipeList ingredients for purchasing)
-
-~~~~~~~~~~
-
-// Update this change AFTER church/add classes
-// Multiple different units of same ingredients should convert & add to the correct qty base unit
 
 At what level should this happen?
 

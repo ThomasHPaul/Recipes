@@ -19,6 +19,12 @@ public class StandardUnit {
         list.put("pt", new StandardUnit("pt", "pint"));
         list.put("gal", new StandardUnit("gal", "gallon"));
 
+        list.put("mg", new StandardUnit("mg", "milligram"));
+        list.put("g", new StandardUnit("g", "gram"));
+        list.put("kg", new StandardUnit("kg", "kilogram"));
+        list.put("oz", new StandardUnit("oz", "ounce"));
+        list.put("lb", new StandardUnit("lb", "pound"));
+
         // TODO: Add weight measurements & conversions
         // standardUnits.put(__ADD WEIGHTS__)
     }
@@ -62,4 +68,6 @@ public class StandardUnit {
     public static String getAbbreviationFromList(String abbrev) { return list.get(abbrev).getAbbreviation(); }
 
     public static String getFullName(String abbrev) { return list.get(abbrev).getFullName(); }
+
+    public static StandardUnit getUnit(String abbrev) { return list.get(abbrev); }
 }

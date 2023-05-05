@@ -9,23 +9,27 @@ public class Units {
 
     private static final Map<String, Double> unitConversionTable = new HashMap<>();
 
-    private StandardUnit unitsType;
+    private StandardUnit unitType;
     private double qty;
 
-    public Units(double qty, StandardUnit unitsType) {
+    public Units(double qty, StandardUnit unitType) {
         if(qty <= 0) {
             throw new IllegalArgumentException("Cannot create Units object with qty <= 0");
         }
         loadHashMap();
         this.qty = qty;
-        this.unitsType = unitsType;
+        this.unitType = unitType;
     }
 
     public void convert(StandardUnit convertTo) {
-        String conversion = unitsType.getAbbreviation() + "2" + convertTo.getAbbreviation();
+        String conversion = unitType.getAbbreviation() + "2" + convertTo.getAbbreviation();
+
+        if(!unitConversionTable.containsKey(conversion)) {
+            throw new IllegalArgumentException("Conversion not present on unitConversionTable");
+        }
         double newQty = Math.round(qty * unitConversionTable.get(conversion).doubleValue());
         qty = newQty;
-        unitsType = convertTo;
+        unitType = convertTo;
     }
 
     @Override
@@ -35,16 +39,16 @@ public class Units {
             pluralOrLessThanOneEnding = "s";
         }
 
-        return String.format("%s %s%s", qty, unitsType.getFullName(), pluralOrLessThanOneEnding);
+        return String.format("%s %s%s", qty, unitType.getFullName(), pluralOrLessThanOneEnding);
     }
 
     public double getQty() { return qty; }
 
     public void setQty(double qty) { this.qty = qty; }
 
-    public StandardUnit getStandardUnit() { return unitsType; }
+    public StandardUnit getStandardUnit() { return unitType; }
 
-    public void setStandardUnit(StandardUnit units) { unitsType = units; }
+    public void setStandardUnit(StandardUnit units) { unitType = units; }
 
     private void loadHashMap() {
         unitConversionTable.put("ml2l",0.0001d);
@@ -127,5 +131,30 @@ public class Units {
         unitConversionTable.put("c2qt", 0.25d);
         unitConversionTable.put("c2gal", 0.0625d);
         unitConversionTable.put("c2pt", 0.5d);
+
+        unitConversionTable.put("g2kg", 0.001d);
+        unitConversionTable.put("g2oz", 0.035d);
+        unitConversionTable.put("g2lb", 0.002204623d);
+        unitConversionTable.put("g2mg", 1000.0d);
+
+        unitConversionTable.put("kg2g", 1000.0d);
+        unitConversionTable.put("kg2oz", 35.27396d);
+        unitConversionTable.put("kg2lb", 2.204623d);
+        unitConversionTable.put("kg2mg", 1000000.0d);
+
+        unitConversionTable.put("oz2g", 28.34952d);
+        unitConversionTable.put("oz2kg", 0.02834952d);
+        unitConversionTable.put("oz2lb", 0.0625d);
+        unitConversionTable.put("oz2mg", 28349.52d);
+
+        unitConversionTable.put("lb2g", 453.6d);
+        unitConversionTable.put("lb2kg", .4536d);
+        unitConversionTable.put("lb2oz", 16d);
+        unitConversionTable.put("lb2mg", 453600.0d);
+
+        unitConversionTable.put("mg2g", 0.001d);
+        unitConversionTable.put("mg2kg", 0.000001d);
+        unitConversionTable.put("mg2oz", 0.000035d);
+        unitConversionTable.put("mg2lb", 0.000002204623d);
     }
 }
