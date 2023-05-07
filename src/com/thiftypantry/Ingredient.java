@@ -9,12 +9,13 @@ public class Ingredient {
         this.units = units;
     }
 
-    private void convertToBaseUnit() {
+    public void convertToBaseUnit() {
         StandardUnit currentUnits = units.getStandardUnit();
         if(currentUnits != Units.commonVolumeUnit) {
             units.convert(Units.commonVolumeUnit);
         }
     }
+
     public double getAmount() { return units.getQty(); }
 
     @Override

@@ -24,9 +24,6 @@ public class StandardUnit {
         list.put("kg", new StandardUnit("kg", "kilogram"));
         list.put("oz", new StandardUnit("oz", "ounce"));
         list.put("lb", new StandardUnit("lb", "pound"));
-
-        // TODO: Add weight measurements & conversions
-        // standardUnits.put(__ADD WEIGHTS__)
     }
 
     private String abbreviation;
