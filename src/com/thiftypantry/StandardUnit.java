@@ -9,32 +9,34 @@ public class StandardUnit {
 
     static {
         list = new HashMap<>();
-        list.put("ml", new StandardUnit("ml", "milliliter"));
-        list.put("l", new StandardUnit("l", "liter"));
-        list.put("tsp", new StandardUnit("tsp", "tsp"));
-        list.put("tbsp", new StandardUnit("tbsp", "tablespoon"));
-        list.put("floz", new StandardUnit("floz", "fluid ounce"));
-        list.put("c", new StandardUnit("c", "cup"));
-        list.put("qt", new StandardUnit("qt", "quart"));
-        list.put("pt", new StandardUnit("pt", "pint"));
-        list.put("gal", new StandardUnit("gal", "gallon"));
+        list.put("ml", new StandardUnit("ml", "milliliter", UnitType.VOLUME));
+        list.put("l", new StandardUnit("l", "liter", UnitType.VOLUME));
+        list.put("tsp", new StandardUnit("tsp", "tsp", UnitType.VOLUME));
+        list.put("tbsp", new StandardUnit("tbsp", "tablespoon", UnitType.VOLUME));
+        list.put("floz", new StandardUnit("floz", "fluid ounce", UnitType.VOLUME));
+        list.put("c", new StandardUnit("c", "cup", UnitType.VOLUME));
+        list.put("qt", new StandardUnit("qt", "quart", UnitType.VOLUME));
+        list.put("pt", new StandardUnit("pt", "pint", UnitType.VOLUME));
+        list.put("gal", new StandardUnit("gal", "gallon", UnitType.VOLUME));
 
-        list.put("mg", new StandardUnit("mg", "milligram"));
-        list.put("g", new StandardUnit("g", "gram"));
-        list.put("kg", new StandardUnit("kg", "kilogram"));
-        list.put("oz", new StandardUnit("oz", "ounce"));
-        list.put("lb", new StandardUnit("lb", "pound"));
+        list.put("mg", new StandardUnit("mg", "milligram", UnitType.WEIGHT));
+        list.put("g", new StandardUnit("g", "gram", UnitType.WEIGHT));
+        list.put("kg", new StandardUnit("kg", "kilogram", UnitType.WEIGHT));
+        list.put("oz", new StandardUnit("oz", "ounce", UnitType.WEIGHT));
+        list.put("lb", new StandardUnit("lb", "pound", UnitType.WEIGHT));
     }
 
     private String abbreviation;
     private String fullName;
+    private UnitType unitType;
 
-    StandardUnit(String abbreviation, String fullName) {
+    StandardUnit(String abbreviation, String fullName, UnitType unitType) {
         this.abbreviation = abbreviation;
         this.fullName = fullName;
+        this.unitType = unitType;
     }
 
-    public static void upsertMeasurement(String abbrev, String fullName) {
+    public static void upsertMeasurement(String abbrev, String fullName, UnitType unitType) {
         if(fullName == null) {
             throw new IllegalArgumentException("Cannot have null value for unit fullName");
         }
@@ -51,12 +53,14 @@ public class StandardUnit {
             throw new IllegalArgumentException("Measurement " + abbrev + " is already in StandardUnit.list");
         }
 
-        list.put(abbrev, new StandardUnit(abbrev, fullName));
+        list.put(abbrev, new StandardUnit(abbrev, fullName, unitType));
     }
 
     public static void removeMeasurement(String abbrev) {
         list.remove(abbrev);
     }
+
+    public UnitType getUnitType() { return this.unitType; }
 
     public String getAbbreviation() { return abbreviation; }
 

@@ -5,12 +5,14 @@ import java.util.Map;
 
 public class Units {
 
-    public static final StandardUnit commonVolumeUnit = StandardUnit.list.get("ml");
+    private static final StandardUnit commonVolumeUnit = StandardUnit.list.get("ml");
+    private static final StandardUnit commonWeightUnit = StandardUnit.list.get("g");
 
     private static final Map<String, Double> unitConversionTable = new HashMap<>();
 
     private StandardUnit unitType;
     private double qty;
+    private final StandardUnit commonUnit;
 
     public Units(double qty, StandardUnit unitType) {
         if(qty <= 0) {
@@ -19,6 +21,7 @@ public class Units {
         loadHashMap();
         this.qty = qty;
         this.unitType = unitType;
+        commonUnit = (unitType.getUnitType() == UnitType.WEIGHT) ? commonWeightUnit : commonVolumeUnit;
     }
 
     public void convert(StandardUnit convertTo) {
@@ -27,7 +30,7 @@ public class Units {
         if(!unitConversionTable.containsKey(conversion)) {
             throw new IllegalArgumentException("Conversion not present on unitConversionTable");
         }
-        double newQty = Math.round(qty * unitConversionTable.get(conversion).doubleValue());
+        double newQty = Double.parseDouble(String.format("%.2f", qty * unitConversionTable.get(conversion).doubleValue()));
         qty = newQty;
         unitType = convertTo;
     }
@@ -42,6 +45,7 @@ public class Units {
         return String.format("%s %s%s", qty, unitType.getFullName(), pluralOrLessThanOneEnding);
     }
 
+    public StandardUnit getCommonUnit() { return commonUnit; }
     public double getQty() { return qty; }
 
     public void setQty(double qty) { this.qty = qty; }

@@ -11,8 +11,8 @@ public class Ingredient {
 
     public void convertToBaseUnit() {
         StandardUnit currentUnits = units.getStandardUnit();
-        if(currentUnits != Units.commonVolumeUnit) {
-            units.convert(Units.commonVolumeUnit);
+        if(currentUnits != units.getCommonUnit()) {
+            units.convert(units.getCommonUnit());
         }
     }
 

@@ -28,8 +28,8 @@ public class UnitsTest {
     private static Stream<Arguments> unitConversionArgumentProvider() {
         return Stream.of(
                 Arguments.of(1, new Units(3d, StandardUnit.getUnit("tsp")), "tbsp"),
-                Arguments.of(0.05, new Units(28d, StandardUnit.getUnit("g")), "lb"),
-                Arguments.of(1287.0, new Units(0.34d, StandardUnit.getUnit("gal")), "ml")
+                Arguments.of(0.06, new Units(28d, StandardUnit.getUnit("g")), "lb"),
+                Arguments.of(1287.04, new Units(0.34d, StandardUnit.getUnit("gal")), "ml")
         );
     }
 
