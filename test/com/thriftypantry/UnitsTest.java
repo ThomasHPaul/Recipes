@@ -23,8 +23,6 @@ public class UnitsTest {
         assertEquals(expectedQty,units.getQty());
     }
 
-    // TODO: based on this test, should return rounded number able to contain decimals
-    // TODO: test with very small numbers
     private static Stream<Arguments> unitConversionArgumentProvider() {
         return Stream.of(
                 Arguments.of(1, new Units(3d, StandardUnit.getUnit("tsp")), "tbsp"),
@@ -48,7 +46,6 @@ public class UnitsTest {
     public void toStringCalledOnUnitsWithQtyNotEqualToOne_sAddedToEndOfUnitName() {
         var units = new Units(0.5d, StandardUnit.getUnit("c"));
 
-        System.out.println(units);
         assertEquals("0.5 cups", units.toString());
     }
 

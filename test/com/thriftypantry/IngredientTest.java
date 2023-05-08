@@ -28,14 +28,12 @@ public class IngredientTest {
             ingredient.makeNamePlural();
         }
 
-        System.out.println(ingredient);
         assertEquals("0.5 cups onions", ingredient.toString());
     }
 
     @ParameterizedTest
     @MethodSource("convertVolumeWeightProvider")
     public void convertToBaseUnitCalled_ConvertAbleToDistinguishVolumeAndWeight(double correctAmount, Ingredient ingredient) {
-        System.out.println("Ingredient Test: " + ingredient);
         ingredient.convertToBaseUnit();
         assertEquals(correctAmount, ingredient.getAmount());
     }
