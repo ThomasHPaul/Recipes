@@ -1,17 +1,19 @@
 package com.thriftypantry;
 
-import com.thiftypantry.Ingredient;
-import com.thiftypantry.StandardUnit;
-import com.thiftypantry.Step;
-import com.thiftypantry.Units;
+import com.thiftypantry.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RecipeListTest {
 
     @Test
     public void getAllIngredientsFromMultiRecipeList_MapOfIngredientsWithQuantitiesInBaseUnitReturned() {
+
+        RecipeList recipeList = new RecipeList();
+
         // Recipe 1: Braised Chicken
         //initiate stepList
         Step bcStep1 = new Step(1, "salt the chicken and dip in oil", 1);
@@ -19,11 +21,11 @@ public class RecipeListTest {
         Step bcStep3 = new Step(3, "melt butter into skillet", 1);
         Step bcStep4 = new Step(4, "place chicken into skillet and cook for 5 minutes on each side", 10);
 
-        ArrayList<Step> braisedChickenSteps = new ArrayList<>();
-        braisedChickenSteps.add(bcStep1);
-        braisedChickenSteps.add(bcStep2);
-        braisedChickenSteps.add(bcStep3);
-        braisedChickenSteps.add(bcStep4);
+        ArrayList<Step> bcSteps = new ArrayList<>();
+        bcSteps.add(bcStep1);
+        bcSteps.add(bcStep2);
+        bcSteps.add(bcStep3);
+        bcSteps.add(bcStep4);
 
         //initiate ingredientList
         Ingredient bcIngredient1 = new Ingredient("chicken", new Units(4d, StandardUnit.getUnit("lb")));
@@ -31,14 +33,13 @@ public class RecipeListTest {
         Ingredient bcIngredient3 = new Ingredient("butter", new Units(4d, StandardUnit.getUnit("tbsp")));
         Ingredient bcIngredient4 = new Ingredient("oil", new Units(2.5d, StandardUnit.getUnit("tbsp")));
 
-        ArrayList<Ingredient> braisedChickenIngredients = new ArrayList<>();
-        braisedChickenIngredients.add(bcIngredient1);
-        braisedChickenIngredients.add(bcIngredient2);
-        braisedChickenIngredients.add(bcIngredient3);
-        braisedChickenIngredients.add(bcIngredient4);
+        ArrayList<Ingredient> bcIngredients = new ArrayList<>();
+        bcIngredients.add(bcIngredient1);
+        bcIngredients.add(bcIngredient2);
+        bcIngredients.add(bcIngredient3);
+        bcIngredients.add(bcIngredient4);
 
-        RecipeList recipeList = new RecipeList();
-        recipeList.add(1, "Braised Chicken", braisedChickenSteps, braisedChickenIngredients, "pioneer mom website with original recipe");
+        recipeList.add(new Recipe(1, "Braised Chicken", bcSteps, bcIngredients, "pioneer mom website with original recipe"));
 
         // Recipe 2: Spaghetti
         Step sStep1 = new Step(1, "place pot of water on stove and bring to boil", 15);
@@ -52,32 +53,36 @@ public class RecipeListTest {
         Step sStep9 = new Step(9, "pour meat into pot", 1);
         Step sStep10 = new Step(10, "add sauce of choice and stir together", 1);
 
-        ArrayList<Step> sChickenSteps = new ArrayList<>();
-        braisedChickenSteps.add(sStep1);
-        braisedChickenSteps.add(sStep2);
-        braisedChickenSteps.add(sStep3);
-        braisedChickenSteps.add(sStep4);
-        braisedChickenSteps.add(sStep5);
-        braisedChickenSteps.add(sStep6);
-        braisedChickenSteps.add(sStep7);
-        braisedChickenSteps.add(sStep8);
-        braisedChickenSteps.add(sStep9);
-        braisedChickenSteps.add(sStep10);
+        ArrayList<Step> sSteps = new ArrayList<>();
+        sSteps.add(sStep1);
+        sSteps.add(sStep2);
+        sSteps.add(sStep3);
+        sSteps.add(sStep4);
+        sSteps.add(sStep5);
+        sSteps.add(sStep6);
+        sSteps.add(sStep7);
+        sSteps.add(sStep8);
+        sSteps.add(sStep9);
+        sSteps.add(sStep10);
 
-        //initiate ingredientList
-        // TODO continue here
-        Ingredient sIngredient1 = new Ingredient("chicken", new Units(4d, StandardUnit.getUnit("lb")));
-        Ingredient sIngredient2 = new Ingredient("salt", new Units(2d, StandardUnit.getUnit("tsp")));
-        Ingredient sIngredient3 = new Ingredient("butter", new Units(4d, StandardUnit.getUnit("tbsp")));
-        Ingredient sIngredient4 = new Ingredient("oil", new Units(2.5d, StandardUnit.getUnit("tbsp")));
+        Ingredient sIngredient1 = new Ingredient("spaghetti noodles", new Units(1d, StandardUnit.getUnit("lb")));
+        Ingredient sIngredient2 = new Ingredient("red sauce", new Units(3d, StandardUnit.getUnit("c")));
+        Ingredient sIngredient3 = new Ingredient("ground beef", new Units(1d, StandardUnit.getUnit("lb")));
+        Ingredient sIngredient4 = new Ingredient("oil", new Units(9d, StandardUnit.getUnit("tsp")));
 
-        ArrayList<Ingredient> braisedChickenIngredients = new ArrayList<>();
-        braisedChickenIngredients.add(sIngredient1);
-        braisedChickenIngredients.add(sIngredient2);
-        braisedChickenIngredients.add(sIngredient3);
-        braisedChickenIngredients.add(sIngredient4);
+        ArrayList<Ingredient> sIngredients = new ArrayList<>();
+        sIngredients.add(sIngredient1);
+        sIngredients.add(sIngredient2);
+        sIngredients.add(sIngredient3);
+        sIngredients.add(sIngredient4);
 
-        RecipeList recipeList = new RecipeList();
-        recipeList.add(1, "Braised Chicken", braisedChickenSteps, braisedChickenIngredients, "pioneer mom website with original recipe");
+        recipeList.add(new Recipe(1, "Spaghetti", sSteps, sIngredients, "easy recipe mom website"));
+
+        int numOfIngredients = 7;
+        double qtyOilInMl = 92.5d; // 2.5 tbsp + 9 tsp = 16.5 tsp -> 92.5 mL
+
+        assertEquals(numOfIngredients, recipeList.getNumOfIngredients());
+
+        assertEquals(qtyOilInMl, recipeList.getIngredientQty("oil"));
     }
 }

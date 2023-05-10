@@ -26,4 +26,6 @@ public class Ingredient {
     public Units getUnits() { return units; }
 
     public void makeNamePlural() { name = name + "s"; }
+
+    public String getName() { return name; }
 }

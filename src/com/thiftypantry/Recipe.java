@@ -2,6 +2,7 @@ package com.thiftypantry;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Recipe {
 
@@ -65,6 +66,36 @@ public class Recipe {
         if(ingredientList.size() == 0) {
             throw new IllegalArgumentException("Recipe.ingredientList cannot be empty");
         }
+    }
+
+    public List<String> getIngredientNames() {
+        List<String> ingredientNames = new ArrayList<>();
+
+        for(Ingredient ingredient : ingredientList) {
+            ingredientNames.add(ingredient.getName());
+        }
+
+        return ingredientNames;
+    }
+
+    public double getIngredientQty(String ingredientName) {
+        for(Ingredient ingredient : ingredientList) {
+            if(ingredient.getName() == ingredientName) {
+                return ingredient.getAmount();
+            }
+        }
+        return 0;
+    }
+
+    public List<Ingredient> getIngredientList() { return ingredientList; }
+
+    public Ingredient getIngredient(String ingredientName) {
+        for(Ingredient ingredient : ingredientList) {
+            if(ingredient.getName().equals(ingredientName)) {
+                return ingredient;
+            }
+        }
+        return null;
     }
 
 }
