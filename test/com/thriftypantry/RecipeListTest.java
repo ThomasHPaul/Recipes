@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RecipeListTest {
 
     @Test
-    public void getAllIngredientsFromMultiRecipeList_MapOfIngredientsWithQuantitiesInBaseUnitReturned() {
+    public void recipesWithSimilarIngredients_CorrectQuantitiesInBaseUnitReturned() {
 
         RecipeList recipeList = new RecipeList();
 
@@ -79,7 +79,7 @@ public class RecipeListTest {
         recipeList.add(new Recipe(1, "Spaghetti", sSteps, sIngredients, "easy recipe mom website"));
 
         int numOfIngredients = 7;
-        double qtyOilInMl = 92.5d; // 2.5 tbsp + 9 tsp = 16.5 tsp -> 92.5 mL
+        double qtyOilInMl = 82.5d; // 2.5 tbsp + 9 tsp = 16.5 tsp -> 92.5 mL
 
         assertEquals(numOfIngredients, recipeList.getNumOfIngredients());
 

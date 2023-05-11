@@ -47,7 +47,6 @@ public class RecipeList {
                     //put ingredient with new qty to ingredientsMap
 
                 //if no, then add new Map entry with ingredient
-        if()
         for(Ingredient ingredient : recipe.getIngredientList()) {
             String ingredientName = ingredient.getName();
 

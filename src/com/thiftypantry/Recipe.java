@@ -66,6 +66,8 @@ public class Recipe {
         if(ingredientList.size() == 0) {
             throw new IllegalArgumentException("Recipe.ingredientList cannot be empty");
         }
+
+        this.ingredientList = ingredientList;
     }
 
     public List<String> getIngredientNames() {
